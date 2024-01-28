@@ -1,0 +1,137 @@
+---
+input:
+  pageBackground: "#FFFFFF"
+  objectBackground: "#5A9BCC"
+  textColour: "#000000"
+textContrastWithObject:
+  contrastRatio: "6.99"
+  status:
+    title: "AA"
+    color: "#008531"
+objectContrastWithPage:
+  contrastRatio: "3"
+  status:
+    title: "AA"
+    color: "#008531"
+---
+
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+  <style>
+    /* initial colours */
+    :root {
+      --app-input-page-background: {{ input.pageBackground }};
+      --app-input-object-background: {{ input.objectBackground }};
+      --app-input-text-color: {{ input.textColour }};
+      --app-object-contrast-with-page-color: {{ objectContrastWithPage.status.color }}; 
+      --app-text-contrast-with-object-color: {{ textContrastWithObject.status.color }};
+    }
+  </style>
+  <h1 class="govuk-heading-xl">Contrast checker</h1>
+  <div class="app-grid">
+    <div class="app-grid-column">      
+      <form>
+        {{ govukInput({
+          classes: "govuk-input--width-5",
+          label: {
+            text: "Text colour"
+          },
+          id: "textColour",
+          name: "textColour",
+          value: input.textColour,
+          attributes: {
+            autocomplete: "off",
+            autocorrect: "off",
+            spellcheck: "off"
+          }
+        }) }}
+
+        {{ govukInput({
+          classes: "govuk-input--width-5",
+          label: {
+            text: "Object background"
+          },
+          id: "objectBackground",
+          name: "objectBackground",
+          value: input.objectBackground,
+          attributes: {
+            autocomplete: "off",
+            autocorrect: "off",
+            spellcheck: "off"
+          }
+        }) }}
+
+        {{ govukInput({
+          classes: "govuk-input--width-5",
+          label: {
+            text: "Page background"
+          },
+          id: "pageBackground",
+          name: "pageBackground",
+          value: input.pageBackground,
+          attributes: {
+            autocomplete: "off",
+            autocorrect: "off",
+            spellcheck: "off"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Reset",
+          type: "reset"
+        }) }}
+
+        {{ govukButton({
+          text: "Update"
+        }) }}
+      </form>
+    </div>
+  
+    <div class="app-grid-column">
+  
+      <div class="app-input-page">
+        <div class="app-input-object">
+          Text
+        </div>
+      </div>
+    </div>
+
+    <div class="app-grid-column" aria-live="polite">
+
+      <h2 class="govuk-heading-s">Text contrast with object background</h2>
+      <p class="govuk-heading-l govuk-!-margin-bottom-0" data-app-text-contrast-with-object-status-title
+            style="color: var(--app-text-contrast-with-object-color);">
+        {{ textContrastWithObject.status.title }}
+      </p>
+      <p class="govuk-heading-xl govuk-!-margin-bottom-0">
+        <span data-app-text-contrast-with-object-contrast-ratio>
+          {{- textContrastWithObject.contrastRatio -}}
+        </span>:1
+      </p>
+      <p class="govuk-!-margin-bottom-7">
+        <a class="govuk-link" href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum">
+          Understanding Success Criterion 1.4.3: Contrast (Minimum)
+        </a>
+      </p>
+
+      <h2 class="govuk-heading-s">Object contrast with page background</h2>
+      <p class="govuk-heading-l govuk-!-margin-bottom-0" data-app-object-contrast-with-page-status-title
+            style="color: var(--app-object-contrast-with-page-color);">
+        {{ objectContrastWithPage.status.title }}
+      </p>
+      <p class="govuk-heading-xl govuk-!-margin-bottom-0">
+        <span data-app-object-contrast-with-page-contrast-ratio>
+          {{- objectContrastWithPage.contrastRatio -}}
+        </span>:1
+      </p>
+      <p>
+        <a class="govuk-link" href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast">
+          Understanding Success Criterion 1.4.11: Non-text Contrast
+        </a>
+      </p>
+
+    </div>
+    
+  </div>
+{% endblock %}

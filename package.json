@@ -1,0 +1,26 @@
+{
+  "name": "contrast-checker",
+  "version": "1.0.0",
+  "description": "Check contrast with the new WCAG 2.1 requirements. Original design by Dave House.",
+  "scripts": {
+    "watch:css": "sass --quiet-deps --load-path=node_modules/govuk-frontend/dist styles:_site/css --watch",
+    "watch:eleventy": "eleventy --serve",
+    "start": "npm-run-all build:sass --parallel watch:*",
+    "build:css": "sass --quiet-deps --load-path=node_modules/govuk-frontend/dist styles:_site/css",
+    "build:js": "esbuild javascript/all.js --bundle --outfile=_site/js/all.js",
+    "build:eleventy": "eleventy",
+    "build": "npm-run-all build:*"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "esbuild": "0.20.0",
+    "govuk-frontend": "^5.0.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.70.0"
+  },
+  "dependencies": {
+    "convert-css-color-name-to-hex": "^0.1.1",
+    "wcag-contrast": "^3.0.0"
+  }
+}

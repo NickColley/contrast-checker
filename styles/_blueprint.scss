@@ -1,0 +1,79 @@
+@import "govuk/helpers/all";
+
+// The font used on GOV.UK is only allowed on GOV.UK domains
+// https://css-tricks.com/snippets/css/system-font-stack/
+$govuk-font-family:
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Oxygen-Sans,
+  Ubuntu,
+  Cantarell,
+  "Helvetica Neue",
+  sans-serif;
+
+$blue-print-blue: darken(govuk-colour("blue"), 3);
+
+$govuk-canvas-background-colour: govuk-colour("blue");
+
+@import "govuk/all";
+
+.app-header {
+  font-family: $govuk-font-family;
+  font-size: 29px;
+  line-height: 29px;
+  border-bottom: 3px solid $blue-print-blue;
+  padding: govuk-spacing(3) 0;
+}
+
+.app-footer {
+  padding: govuk-spacing(5) 0;
+  padding-bottom: govuk-spacing(6);
+  box-shadow: inset 0 (-(govuk-spacing(6))) govuk-spacing(5) (-(govuk-spacing(5))) $govuk-canvas-background-colour;
+}
+
+// Custom styles to look like a blueprint, so we look intentionally not GOV.UK.
+
+.app-header,
+.app-footer {
+  border-top: 3px solid $blue-print-blue;
+  background-color: $govuk-canvas-background-colour;
+  color: govuk-colour("white");
+  background-image:
+    linear-gradient($blue-print-blue 2px, transparent 2px),
+    linear-gradient(90deg, $blue-print-blue 2px, transparent 2px),
+    linear-gradient($blue-print-blue 1px, transparent 1px),
+    linear-gradient(90deg, $blue-print-blue 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -2px -2px, -2px 6px, -1px -1px, -1px -1px;
+  text-shadow:
+    2px 1px 0px $govuk-canvas-background-colour,
+    -2px 1px 0px $govuk-canvas-background-colour,
+    -2px -2px 0px $govuk-canvas-background-colour,
+    2px -2px 0px $govuk-canvas-background-colour
+}
+
+.app-footer__link {
+  color: white !important;
+  &:hover,
+  &:active {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+  &:focus {
+    color: black !important;
+    text-shadow: none !important;
+  }
+}
+
+.app-footer__body {
+  color: inherit;
+  font-size: inherit;
+}
+
+.app-footer__hr {
+    border: 0;
+    border-bottom: 2px solid;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
