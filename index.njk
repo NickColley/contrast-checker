@@ -1,20 +1,3 @@
----
-input:
-  pageBackground: "#FFFFFF"
-  objectBackground: "#5A9BCC"
-  textColour: "#000000"
-textContrastWithObject:
-  contrastRatio: "6.99"
-  status:
-    title: "AA"
-    color: "#008531"
-objectContrastWithPage:
-  contrastRatio: "3"
-  status:
-    title: "AA"
-    color: "#008531"
----
-
 {% extends "layouts/main.njk" %}
 
 {% block content %}
@@ -28,7 +11,7 @@ objectContrastWithPage:
       --app-text-contrast-with-object-color: {{ textContrastWithObject.status.color }};
     }
   </style>
-  <h1 class="govuk-heading-xl">Contrast checker</h1>
+  <h1 class="govuk-heading-xl">Contrast Checker</h1>
   <div class="app-grid">
     <div class="app-grid-column">      
       <form>

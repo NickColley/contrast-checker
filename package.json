@@ -4,8 +4,9 @@
   "description": "Check contrast with the new WCAG 2.1 requirements. Original design by Dave House.",
   "scripts": {
     "watch:css": "sass --quiet-deps --load-path=node_modules/govuk-frontend/dist styles:_site/css --watch",
+    "watch:js": "esbuild javascript/all.js --bundle --outfile=_site/js/all.js --watch",
     "watch:eleventy": "eleventy --serve",
-    "start": "npm-run-all build:sass --parallel watch:*",
+    "start": "npm-run-all build:css build:js --parallel watch:*",
     "build:css": "sass --quiet-deps --load-path=node_modules/govuk-frontend/dist styles:_site/css",
     "build:js": "esbuild javascript/all.js --bundle --outfile=_site/js/all.js",
     "build:eleventy": "eleventy",

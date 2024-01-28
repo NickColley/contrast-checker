@@ -74,14 +74,7 @@ function renderView (data) {
 }
 
 function resetColourInputs () {
-  Array.from(document.querySelectorAll('.js-app-input-color')).forEach($input => {
-    let originalId = $input.id.replace(COLOUR_INPUT_SUFFIX, '')
-    let $originalInput = document.getElementById(originalId)
-    let originalValue = $originalInput.getAttribute('value')
-    $input.value = $originalInput.value = originalValue
-  })
-  var event = new Event('submit')
-  $form.dispatchEvent(event)
+  window.location.href = window.location.origin;
 }
 
 function appendColourInput ($input) {
@@ -105,3 +98,22 @@ function appendColourInput ($input) {
   }
   
 }
+
+// Populate initial render, TODO: Do this server side.
+const queryString = new URLSearchParams(window.location.search);
+const input = Object.fromEntries(queryString.entries());
+const initialContrast = contrast(input);
+
+Array.from($form.elements).forEach($input => {
+    Object.keys(initialContrast.input).forEach(key => {
+        if ($input.id.startsWith(key)) {
+            if ($input.id.endsWith(COLOUR_INPUT_SUFFIX)) {
+                $input.value = convertCssColorNameToHex(initialContrast.input[key]);
+            } else {
+                $input.value = initialContrast.input[key];
+            }
+        }
+    })
+});
+
+renderView(initialContrast);
