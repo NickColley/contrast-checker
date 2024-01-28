@@ -28,7 +28,7 @@
 {% from "../node_modules/govuk-frontend/dist/govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
 {% block pageTitle %}
-  {{ glitchProjectName }} – GOV.UK Example
+  Contrast Checker
 {% endblock %}
 
 {% block headIcons %}
@@ -55,24 +55,6 @@
       <a class="govuk-link app-footer__link" href="https://twitter.com/timpaul/status/1086270159243829249">
         Original design by Dave House, build by Nick Colley.
       </a>
-      <hr class="app-footer__hr"/>
-      <a class="govuk-link app-footer__link" href="https://glitch.com/edit/#!/remix/{{ glitchProjectName }}">
-        Make your own copy of this project on Glitch.com
-      </a>
-      <br>
-      <br>
-      <a class="govuk-link app-footer__link" href="https://glitch.com/edit/#!/{{ glitchProjectName }}">
-        View the source for this project on Glitch.com
-      </a>
-      {% if glitchProjectName != 'hello-govuk-design-system' %}
-        <hr class="app-footer__hr"/>
-        <p class="govuk-body app-footer__body">
-          This project is was originally remixed from the 
-          <a class="govuk-link app-footer__link" href="https://glitch.com/~hello-govuk-design-system">
-            "Hello GOV.UK Design System" project
-          </a>, if you want to create a copy from the source.
-        </p>
-      {% endif %}
     </div>
   </footer>
 {% endblock %}
