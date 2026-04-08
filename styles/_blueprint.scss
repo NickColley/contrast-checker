@@ -1,22 +1,21 @@
-// The font used on GOV.UK is only allowed on GOV.UK domains
-// https://css-tricks.com/snippets/css/system-font-stack/
-$govuk-font-family:
-  -apple-system,
-  BlinkMacSystemFont,
-  "Segoe UI",
-  Roboto,
-  Oxygen-Sans,
-  Ubuntu,
-  Cantarell,
-  "Helvetica Neue",
-  sans-serif;
-
-
-$govuk-functional-colours: (
-  template-background: (name: 'blue')
+@use "govuk" as * with (
+  // The font used on GOV.UK is only allowed on GOV.UK domains
+  // https://css-tricks.com/snippets/css/system-font-stack/
+  $govuk-font-family: (
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen-Sans,
+    Ubuntu,
+    Cantarell,
+    "Helvetica Neue",
+    sans-serif
+  ),
+  $govuk-functional-colours: (
+    template-background: (name: 'blue')
+  )
 );
-
-@import "govuk";
 
 $blueprint-border: rgba(0, 0, 0, 0.05);
 
